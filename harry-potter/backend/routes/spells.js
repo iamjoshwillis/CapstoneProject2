@@ -1,6 +1,6 @@
 const express = require("express");
 const db = require("../db");
-const Spell = require("../models/spell");
+const Spell = require("../models/spells");
 
 const router = new express.Router();
 
@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-//Get spell information by name
+//Get spell information by id
 router.get("/:id", async (req, res, next) => {
     try {
         const spell = await Spell.getById(req.params.id);

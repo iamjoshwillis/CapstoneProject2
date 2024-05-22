@@ -4,7 +4,6 @@ const ExpressError = require("../expressError");
 
 BASE_URL = 'https://hp-api.onrender.com/api/spells';
 
-
 class Spell {
   //Get all data on all spells from API
   static async getAll() {
