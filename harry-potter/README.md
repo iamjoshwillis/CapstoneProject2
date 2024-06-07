@@ -3,6 +3,7 @@
 Create an account, view courses, staff, spells, potions, and shop online at Hogsmeade.
 
 ## Getting Started
+Start by running potter.sql to build and seed the database.
 
 In the frontend directory, you can run:
 
@@ -19,6 +20,21 @@ In the backend directory, you can run:
 ### `nodemon start`
 
 Starts the backend on http://localhost:3001
+
+## Experiencing the user portal
+
+### Signing Up
+
+You'll notice that the Navigation bar contains scrambled words. You'll need to be an enrolled witch or wizard to have the magical ability to deciper the contents. 
+
+Choose your login details, pick a bio, and sign up.
+Next, you'll be brought to the Sorting Hat page, where you can read about each house, see its colors, and founders.
+
+Upon sorting, you'll be brought to your user dashboard that will display your name, bio, house, and your profile image will dynamically changed based on the house you're sorted into.
+
+### Navigating 
+
+While 
 
 ### `npm run build`
 
