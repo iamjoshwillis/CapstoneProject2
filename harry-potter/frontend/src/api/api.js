@@ -89,8 +89,9 @@ class PotterApi {
     return res;
   }
 
-  static async sortingHat(data) {
-    let res = await this.request('sortinghat', data, "post");
+  //Sort User Into House
+  static async sortingHat(username) {
+    let res = await this.request(`users/sortinghat/${username}`, username, "patch");
     return res;
   }
 

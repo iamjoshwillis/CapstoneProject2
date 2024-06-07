@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PotterApi from "../api/api";
-import CourseCard from "./CourseCard";
+import CourseDetail from "./CourseDetail";
 
 const CourseList = () => {
   const [courses, setCourses] = useState(null);
@@ -16,22 +16,24 @@ const CourseList = () => {
     loadData();
   }, []);
 
-  // Function to get professor name based on the foreign key
+  
   const getProfessorName = (professorId) => {
     if (professors) {
       const professor = professors.find((prof) => prof.id === professorId);
       return professor ? professor.name : "Unknown Professor";
     }
-    return "Loading..."; // Or you can return null or handle loading state accordingly
+    return "Loading...";
   };
 
   return (
-    <div className="text-center text-white">
-      <h1 className="text-3xl font-bold text-white text-center">Explore Our Courses</h1>
+    <div className="text-center">
+      <h1 className="text-3xl p-6 font-bold text-slate-100 text-center">
+          Explore Our Courses
+        </h1>
       <div className="flex justify-center flex-wrap gap-4">
         {courses &&
           Object.values(courses).map((course) => (
-            <CourseCard
+            <CourseDetail
               key={course.id}
               id={course.id}
               name={course.name}

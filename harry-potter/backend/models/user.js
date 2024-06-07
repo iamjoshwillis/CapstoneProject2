@@ -1,5 +1,8 @@
 const db = require("../db");
 const ExpressError = require("../expressError");
+const bcrypt = require("bcrypt");
+
+const { BCRYPT_WORK_FACTOR } = require("../config.js");
 
 class User {
   //Get data on all users
@@ -17,12 +20,25 @@ class User {
   }
   
   //New user registration
-  static async create(username, first_name, last_name, house, bio, email, password) {
+  static async register({username, first_name, last_name, bio, email, password}) {
+    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
+
     const result = await db.query(
-      `INSERT INTO users (username, first_name, last_name, house, bio, email, password) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
-        RETURNING username, bio, email, password`,
-      [username, first_name, last_name, house, bio, email, password]
+      `INSERT INTO users (username, first_name, last_name, bio, email, password) 
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING username, first_name, last_name, bio, email`,
+      [username, first_name, last_name, bio, email, hashedPassword]
+    );
+    const user = result.rows[0];
+    return user;
+  }
+
+  //Sort User Into House
+  static async sort(username) {
+    const house = Math.floor(Math.random() * 4) + 1;
+    const result = await db.query(
+      `UPDATE users SET house = $1 WHERE username = $2 RETURNING username, first_name, last_name, bio, house`,
+      [house, username],
     );
     return result.rows[0];
   }

@@ -5,10 +5,12 @@ import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";
 import ItemsList from "../hogsmeade/ItemsList";
 import CourseList from "../courses/CourseList";
-import ProfessorDetail from "../professors/ProfessorDetail";
-import SpellDetail from "../spells/SpellDetail";
+import StudentList from "../students/StudentList";
+import ProfessorList from "../professors/ProfessorList";
+import HouseList from "../houses/HouseList";
+import SpellList from "../spells/SpellList";
 import UserProfile from "../users/UserProfile";
-import SortingHat from "../users/SortingHat";
+import SortingHat from "../houses/SortingHat";
 
 function RoutesGroup({ login, signup }) {
   return (
@@ -19,10 +21,12 @@ function RoutesGroup({ login, signup }) {
         <Route path="/signup" element={<SignupForm signup={signup} />} />
         <Route path="/hogsmeade" element={<ItemsList />} />
         <Route path="/courses" element={<CourseList />} />
-        <Route path="/professors/:id" element={<ProfessorDetail />} />
-        <Route path="/spells" element={<SpellDetail />} />
+        <Route path="/professors" element={<ProfessorList />} />
+        <Route path="/students" element={<StudentList />} />
+        <Route path="/houses" element={<HouseList />} />
+        <Route path="/spells" element={<SpellList />} />
         <Route path="/users/:username" element={<UserProfile />} />
-        <Route path="/spells" element={<SpellDetail />} />
+        <Route path="/sortinghat" element={<SortingHat />} />
       </Routes>
     </div>
   );

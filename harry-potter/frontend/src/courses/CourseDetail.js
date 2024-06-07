@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import PotterApi from "../api/api";
+import React from "react";
 
-const CourseDetail = () => {
-    const params = useParams();
-    const [course, setCourse] = useState(null);
+const CourseDetail = ({ name, description, professor, time }) => {
 
-    useEffect(() => {
-        async function loadCourse() {
-            setCourse(await PotterApi.getCourse(params.id));
-        }
-        loadCourse();
-    }, [params.id]);
-    
-    if(!course) return <h3>Loading...</h3>
-
-    return (
-        <div>
-            <h1>Course Details</h1>
-            <h2>{course.name}</h2>
-            <h3>{course.description}</h3>
-            <h3>{course.professor}</h3>
-            <h3>{course.time}</h3>
-            <button>Register for Course</button>
-        </div>
-    ); 
-}
+  return (
+    <div className="w-1/2 flex font-sans p-2">
+      <div className="shadow-lg bg-gray-700 rounded-lg flex-auto p-6">
+        <h6 className="text-2xl font-semibold text-slate-300">{name}</h6>
+        <p className="w-full flex-none text-md text-slate-400 mt-2">{description}</p>
+        <p className="w-full flex-none text-md text-slate-300 mt-2">{professor}</p>
+        <p className="w-full flex-none text-md text-slate-400 mt-2">{time}</p>
+      </div>
+    </div>
+);
+};
 
 export default CourseDetail;

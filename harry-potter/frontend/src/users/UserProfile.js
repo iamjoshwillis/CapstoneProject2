@@ -32,7 +32,7 @@ function UserProfile() {
     let updatedUser;
 
     try {
-      updatedUser = await PotterApi.saveProfile(profileData);
+      updatedUser = await PotterApi.saveProfileChanges(profileData);
     } catch(e) {
       return;
     }
@@ -53,11 +53,11 @@ function UserProfile() {
 
   return (
       <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-        <h3 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Edit Profile</h3>
+        <h3 className="mt-10 text-gray-100 text-center text-2xl font-bold leading-9 tracking-tight">Edit Profile</h3>
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form>
               <div className="form-group">
-                <label className="block text-sm font-medium leading-6 text-white">Username</label>
+                <label className="block text-sm text-gray-100 font-medium leading-6">Username</label>
                 <input
                     name="username"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -66,7 +66,7 @@ function UserProfile() {
                 />
               </div>
               <div className="form-group">
-                <label className="block text-sm font-medium leading-6 text-white">First Name</label>
+                <label className="block text-sm text-gray-100 font-medium leading-6">First Name</label>
                 <input
                     name="first_name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -75,7 +75,7 @@ function UserProfile() {
                 />
               </div>
               <div className="form-group">
-                <label className="block text-sm font-medium leading-6 text-white">Last Name</label>
+                <label className="block text-sm text-gray-100 font-medium leading-6">Last Name</label>
                 <input
                     name="last_name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -84,7 +84,7 @@ function UserProfile() {
                 />
               </div>
               <div className="form-group">
-                <label className="block text-sm font-medium leading-6 text-white">Email</label>
+                <label className="block text-sm text-gray-100 font-medium leading-6">Email</label>
                 <input
                     name="email"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -93,7 +93,7 @@ function UserProfile() {
                 />
               </div>
               <div className="form-group">
-                <label className="block text-sm font-medium leading-6 text-white">Verify Password</label>
+                <label className="block text-sm text-gray-100 font-medium leading-6">Verify Password</label>
                 <input
                     type="password"
                     name="password"
@@ -105,7 +105,7 @@ function UserProfile() {
               <div>
               <button
               type="submit"
-              class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 p-8"
+              className="flex mt-10 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 p-8"
               onSubmit={handleSubmit}
             >
               Submit Changes

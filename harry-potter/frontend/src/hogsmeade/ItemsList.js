@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PotterApi from "../api/api";
-import ItemCard from "./ItemCard";
-import StoreCard from "./StoreCard";
+import ItemDetail from "./ItemDetail";
+import StoreDetail from "./StoreDetail";
 
 //Show List of Items -> Routed at /hogsmeade
 const ItemsList = () => {
@@ -29,13 +29,13 @@ const ItemsList = () => {
   return (
     <div>
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-white text-center">
+        <h1 className="text-3xl p-6 font-bold text-slate-100 text-center">
           Our Stores
         </h1>
         <div className="flex justify-center flex-wrap gap-4">
           {stores &&
             Object.values(stores).map((store) => (
-              <StoreCard
+              <StoreDetail
                 key={store.id}
                 id={store.id}
                 name={store.name}
@@ -45,13 +45,13 @@ const ItemsList = () => {
         </div>
       </div>
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-white text-center">
-          Online Shopping at Hogsmeade Village
+        <h1 className="text-3xl p-6 font-bold text-slate-100 text-center">
+          Browse Items at Hogsmeade Village
         </h1>
-        <div className="flex justify-center flex-wrap gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {items &&
             Object.values(items).map((item) => (
-              <ItemCard
+              <ItemDetail
                 key={item.id}
                 id={item.id}
                 name={item.name}

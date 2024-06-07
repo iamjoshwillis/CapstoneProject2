@@ -3,40 +3,40 @@ VALUES
         (1,
         'Slytherin',
         'Salazar Slytherin',
-        'Photo_Placeholder',
+        '/images/SlytherinEmblem.jpg',
         'Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation.'
         ),
         (2,
         'Gryffindor',
         'Godric Gryffindor',
-        'Photo_Placeholder',
+        '/images/GryffindorEmblem.jpg',
         'The Gryffindor house emphasises the traits of courage as well as "daring, nerve, and chivalry", and thus its members were generally regarded as brave, though sometimes to the point of recklessness.'
         ),
         (3,
         'Ravenclaw',
         'Rowena Ravenclaw',
-        'Photo_Placeholder',
+        '/images/RavenclawEmblem.jpg',
         'The Ravenclaw House prizes learning, wisdom, wit, and intellect in its members. Thus, many Ravenclaws tend to be academically motivated and talented students.'
         ),
         (4,
         'Hufflepuff',
         'Helga Hufflepuff',
-        'Photo_Placeholder',
+        '/images/HufflepuffEmblem.jpg',
         'Students belonging to this house are known to be hard-working, friendly, loyal, honest and rather impartial. Hufflepuffs are more modest about their accomplishments.'
         );
 
 INSERT INTO professors(name, house, image, courses)
 VALUES 
-        ('Sybill Trelawney', 4, 'image', 'Divination'),
-        ('Rolanda Hooch', 2, 'image', 'Flying'),
-        ('Filius Flitwick', 3, 'image', 'Charms'),
-        ('Pomona Sprout', 4, 'image', 'Herbology'),
+        ('Sybill Trelawney', 4, '/images/Trelawney.jpg', 'Divination'),
+        ('Rolanda Hooch', 2, '/images/Hooch.jpg', 'Flying'),
+        ('Filius Flitwick', 3, '/images/Flitwick.jpg', 'Charms'),
+        ('Pomona Sprout', 4, '/images/Sprout.jpg', 'Herbology'),
         ('Horace Slughorn', 1, 'https://ik.imagekit.io/hpapi/slughorn.JPG', 'Potions'),
         ('Remus Lupin', 2, 'https://ik.imagekit.io/hpapi/lupin.jpg', 'Defense Against the Dark Arts'),
         ('Rubeus Hagrid', 2, 'https://ik.imagekit.io/hpapi/hagrid.png', 'Care of Magical Creatures'),
         ('Severus Snape', 1, 'https://ik.imagekit.io/hpapi/snape.jpg', 'Potions'),
         ('Minerva McGonagall', 2, 'https://ik.imagekit.io/hpapi/mcgonagall.jpg', 'Transfiguration'),
-        ('Aurora Sinistra', 3, 'image', 'Astronomy');
+        ('Aurora Sinistra', 3, '/images/Sinistra.jpg', 'Astronomy');
 
 INSERT INTO courses(name, description, professor, time)
 VALUES

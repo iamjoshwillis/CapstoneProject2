@@ -2,24 +2,29 @@ const User = require("../models/user");
 const express = require("express");
 const db = require("../db");
 const router = new express.Router();
+const { createToken } = require("../helpers/tokens");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { BCRYPT_WORK_FACTOR, SECRET_KEY } = require("../config");
-const {ensureLoggedIn} = require("../middleware/auth")
 const ExpressError = require("../expressError");
+
+router.post("/token", async function (req, res, next) {
+  try {
+    const { username, password } = req.body;
+    const user = await User.authenticate(username, password);
+    const token = createToken(user);
+    return res.json({ token });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 //New User Registration
 router.post("/register", async (req, res, next) => {
   try {
-    const { username, first_name, last_name, password, email, bio } = req.body;
-    const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
-
-    const results = db.query(
-      `INSERT INTO users (username, first_name, last_name, password, email, bio)
-    VALUES ($1, $2, $3, $4, $5, $6)`,
-      [username, first_name, last_name, hashedPassword, email, bio]
-    );
-    return res.json(results.rows[0]);
+    const newUser = await User.register({ ...req.body })
+    const token = createToken(newUser);
+    return res.status(201).json({ token });
   } catch (e) {
     return next(e);
   }

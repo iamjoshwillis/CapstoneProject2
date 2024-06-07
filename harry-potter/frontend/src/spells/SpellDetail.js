@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
+const SpellDetail = ({ name, description }) => {
 
-const SpellDetail = () => {
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        async function loadSpells() {
-            const res = await axios.get("https://api.potterdb.com/v1/spells/e4e30085-14df-4de2-8888-4bce50f50ea3");
-            setData([res.data]);
-    }
-    loadSpells();
-}, [])
-
-    if(!data) return <h3>Loading...</h3>
-
-    return (
-        <div>
-        <h1>Spells</h1>
-        <h3>{data.attributes.name}</h3>
-        </div>
-    )
-}
+  return (
+    <div className="w-1/3 flex font-sans p-2">
+      <div className="shadow-lg bg-gray-800 rounded-lg flex-auto p-6">
+        <h6 className="text-2xl font-semibold text-slate-300">{name}</h6>
+        <p className="w-full flex-none text-md text-slate-400 mt-2">{description}</p>
+      </div>
+    </div>
+);
+};
 
 export default SpellDetail;
