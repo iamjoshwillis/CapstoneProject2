@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PotterApi from "../api/api";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
   };
 
   const chooseImage = (currentUser) => {
-    if (!currentUser || typeof currentUser.house === 'undefined') {
+    if (!currentUser || typeof currentUser.house === "undefined") {
       return "/images/HogwartsEmblem.jpg";
     }
     switch (currentUser.house) {
@@ -42,31 +43,35 @@ const Home = () => {
   };
 
   function loggedInHome() {
-    return (
-      <div className="flex h-full">
-        <div className="py-6 sm:py-9 mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <img src="/images/home-label.png" />
-          <div className="flex flex-wrap font-sans p-1 rounded-lg">
-            <div className="flex-none w-48 h-48 relative rounded-l-md">
-              <img
-                src={chooseImage(currentUser)}
-                alt=""
-                className="w-full h-full rounded-l-lg object-cover object-top"
-              />
-            </div>
-            <div className="shadow-lg bg-gray-800 rounded-r-lg flex-auto p-6">
-              <h6 className="text-2xl font-semibold text-slate-300">
-                Welcome, {currentUser.first_name}
-              </h6>
-              <h3 className="w-full flex-none text-md text-slate-300 mt-2">Student in {getHouseName(currentUser.house)}</h3>
-              <h3 className="w-full flex-none text-md text-slate-400 mt-2">
-                {currentUser.bio}
-              </h3>
+    {
+      return (
+        <div className="flex h-full">
+          <div className="py-6 sm:py-9 mx-auto max-w-4xl px-6 lg:px-8 text-center">
+            <img src="/images/home-label.png" />
+            <div className="flex flex-wrap font-sans p-1 rounded-lg">
+              <div className="flex-none w-48 h-48 relative rounded-l-md">
+                <img
+                  src={chooseImage(currentUser)}
+                  alt=""
+                  className="w-full h-full rounded-l-lg object-cover object-top"
+                />
+              </div>
+              <div className="shadow-lg bg-gray-800 rounded-r-lg flex-auto p-6">
+                <h6 className="text-2xl font-semibold text-slate-300">
+                  Welcome, {currentUser.first_name}
+                </h6>
+                <h3 className="w-full flex-none text-md text-slate-300 mt-2">
+                  Student in {getHouseName(currentUser.house)}
+                </h3>
+                <h3 className="w-full flex-none text-md text-slate-400 mt-2">
+                  {currentUser.bio}
+                </h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   function loggedOutHome() {

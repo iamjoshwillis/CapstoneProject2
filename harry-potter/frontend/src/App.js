@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import useLocalStorage from "./hooks/useLocalStorage";
 import UserContext from "./auth/UserContext";
 import PotterApi from "./api/api";
 import { jwtDecode } from "jwt-decode";
 import Navigation from "./routes-nav/Navigation";
 import RoutesGroup from "./routes-nav/Routes";
+
+export const TOKEN_STORAGE_ID = "potter-token";
 
 function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
